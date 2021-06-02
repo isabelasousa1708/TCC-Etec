@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Cadastro</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="css/index.css">
+        <!-- The core Firebase JS SDK is always required and must be listed first -->
+        <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-analytics.js"></script>
+        <script src="js/index.js"></script>
+        <script src="js/configFirebase.js"></script>
+    </head>
+    <body>
+        <div id="login-container">
+            <div class="imgLogo">
+                <img class="imglogo" src="img/logo2.png" alt="">
+            </div>
+            <h2>Cadastro</h2>
+            <label for="email">E-mail</label>
+            <input type="email"
+              id="email" 
+              placeholder="Digite seu e-mail"
+              required 
+            >
+            <label for="password">Senha</label>
+            <input type="password" 
+             id="password" 
+             placeholder="Digite sua senha"
+            >
+            <button onclick="inscrever()" class="buttom-entrar">Inscreva-se!</button>
+            <div id="redirecionar-container">
+             <p>Já tem uma conta?</p>
+             <a href="index.html">Entrar</a>
+            </div>
+        </div>
+    </body>
+</html>

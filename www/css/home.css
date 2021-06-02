@@ -1,0 +1,64 @@
+*{/*fonts da pagina*/
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Helvetica;
+    color: #323232;
+    border: none;
+}
+body {
+    background-color: rgba(97, 200, 231, 0.411);
+    background-size: cover;
+    background-position-y: -200px;
+}
+#home-container { /* container login */
+    background-color: #FFF;
+    margin-left: auto;
+    margin-right: auto;
+    width: 410px;
+    padding: 25px 25px;
+    margin-top: 30px;
+    border-radius: 10px;
+    text-align: center;
+}
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+li{
+    display: inline;
+}
+li a {
+    display: inline;
+    color: white;
+    text-align: center;
+    padding: 14px 30px;
+    text-decoration: none;
+}
+/*botao upload*/
+
+#img-avatar{
+    width: 180px;
+    padding-top: 40px;
+    
+}  
+#img-camera{
+    width: 55px;
+    position: relative;
+    top:-85px;
+    margin-right: 30px;
+}
+#file{
+    position:relative;
+    top:50px;
+    left: 230px;
+}
+#sendImage{
+    position: relative;
+    right: 10px;
+}
+#cameraApp{
+    position: relative;
+    right: 140px;
+}  
