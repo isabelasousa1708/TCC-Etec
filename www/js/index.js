@@ -23,7 +23,7 @@ function logar(){
   firebase.auth().signInWithEmailAndPassword(email, password)
       .then((user) => {
       window.alert("conta logada com sucesso!");
-      window.location.href = "home.html";
+      window.location.href = "testeUpload.html";
   })
       .catch((error) => {
       var errorCode = error.code;
