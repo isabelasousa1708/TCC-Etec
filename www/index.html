@@ -24,9 +24,14 @@
         <form id="upload-form" action="" method="POST" enctype="multipart/form-data">
                 <label class="btn-upload">
                     <input type="file" id="file" name="file" name="submit">
-                    <button class="btn-"><img src="img/galleryIcon.png" alt=""></button>
+                    <button class="btn"><img src="img/galleryIcon.png" ></button>
                 </label>
-                <input type="submit" id="sendImage" value="ENVIA IMAGEM">
+
+                <label class="bnt-action">
+                    <input type="submit" id="action" >
+                    <button class="btn-action"><img src="img/actionIcon.png" ></button>
+                </label>
+                
         </form>
 
         <div id="gallery">
@@ -43,26 +48,28 @@
              const doUpload = (url, options) =>{
                  console.dir(options);
                  const promiseCallback = (resolve, reject) =>{
-                    fetch(url, options)
-                    .then(response => response.json())
-                    .then(resolve)
-                    .catch(reject);
-                 };
-                 return new Promise (promiseCallback);
-             } 
-             const addImage = (url) =>{
+                        fetch(url, options)
+                        .then(response => response.json())
+                        .then(resolve)
+                        .catch(reject);
+                };
+                return new Promise (promiseCallback);
+            } 
+            
+            const addImage = (url) =>{
                 gallery.innerHTML = `<img src="${url}" width="150" />`;
-             }
-             const onSuccess = (result) => {
+            }
+
+            const onSuccess = (result) => {
 
                  const {data: {link} } = result;
                  console.log('link', link);
                  window.link = link;
                  addImage(link);
 
-             };
+            };
 
-             const uploadImage = (e) => {
+            const uploadImage = (e) => {
                  e.preventDefault();//nao faz submit
                  const file = document.getElementById('file');
                  //pegar o arquivo submetido com data
@@ -81,11 +88,8 @@
                 .then(onSuccess)
                 .catch(console.error);
              };  
-             
-            
             const form = document.getElementById('upload-form');//pegando o form pelo ID
-                form.addEventListener('submit',uploadImage); //form submitado 
-                
+                form.addEventListener('submit',uploadImage); //form submitado       
         </script>
      </div>
     </body>
