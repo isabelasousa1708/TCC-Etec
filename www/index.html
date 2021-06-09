@@ -1,31 +1,96 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <button id = "cameraGetPicture" onclick="cameraGetPicture();">GET PICTURE</button>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Teste upload TESTE.HTML</title>
+        <script src="https://cdnjs.deepai.org/deepai.min.js"></script>
+        <script src="js/index.js"></script>
+        <link rel="stylesheet" href="css/home.css">
+    </head>
+    <body>
+      <div id="home-container">
+        <ul class="menuBar">
+          <div class="icon" >
+          <li class="menuIcon"><a href=""><img src="img/menuIcon.png"/></a></li> 
+          <li class="homeIcon"><a href=""><img src="img/logo-home.jpg" id="img-logo-home"/></a></li>
+          <li class="configIcon"><a href="config.html"><img src="img/configIcon.png"/></a></li>
+          </div>
+      </ul>
+       
+      <img id="img-avatar" src="img/avatar.jpeg" alt="">
 
-    <script>
-        function cameraGetPicture() {
-                navigator.camera.getPicture(onSuccess, onFail, { quality: 50,
-                destinationType: Camera.DestinationType.DATA_URL,
-                sourceType: Camera.PictureSourceType.PHOTOLIBRARY
-            });
+        <form id="upload-form" action="" method="POST" enctype="multipart/form-data">
+                <label class="btn-upload">
+                    <input type="file" id="file" name="file" name="submit">
+                    <button class="btn"><img src="img/galleryIcon.png" ></button>
+                </label>
 
-            function onSuccess(imageURL) {
-                var image = document.getElementById('myImage');
-                image.src = imageURL;
+                <label class="bnt-action">
+                    <input type="submit" id="action" >
+                    <button class="btn-action"><img src="img/actionIcon.png"></button>
+                </label>
+                
+        </form>
+
+        <div id="gallery">
+          <!---->
+        </div>
+
+        <!--<button id="compare" onclick="compare()">comparar</button>-->
+        <button class="buttom-camera" id="cameraApp"><img src="img/cameraIcon.png" ></button>
+            
+        <script type="text/javascript">
+            const CLIENT_ID ="0f6ee2b06618621";
+            const gallery = document.getElementById('gallery');
+
+             const doUpload = (url, options) =>{
+                 console.dir(options);
+                 const promiseCallback = (resolve, reject) =>{
+                        fetch(url, options)
+                        .then(response => response.json())
+                        .then(resolve)
+                        .catch(reject);
+                };
+                return new Promise (promiseCallback);
+            } 
+            
+            const addImage = (url) =>{
+                gallery.innerHTML = `<img src="${url}" width="150" />`;
             }
 
-            function onFail(message) {
-                alert('Failed because: ' + message);
-            }
+            const onSuccess = (result) => {
 
-        }      
-   </script>
-</body>
+                 const {data: {link} } = result;
+                 console.log('link', link);
+                 window.link = link;
+                 addImage(link);
+
+            };
+
+            const uploadImage = (e) => {
+                 e.preventDefault();//nao faz submit
+                 const file = document.getElementById('file');
+                 //pegar o arquivo submetido com data
+                 const data = new FormData();//
+                 data.append('image', file.files[0]);
+                 
+                 
+                 //fazer o upload.
+                 doUpload('https://api.imgur.com/3/image',{
+                    method: 'POST',
+                    body: data,
+                    headers: {
+                        'Authorization':`Client-ID ${CLIENT_ID}`,
+                    }
+                })
+                .then(onSuccess)
+                .catch(console.error);
+             };  
+            const form = document.getElementById('upload-form');//pegando o form pelo ID
+                form.addEventListener('submit',uploadImage); //form submitado       
+        </script>
+     </div>
+    </body>
 </html>
