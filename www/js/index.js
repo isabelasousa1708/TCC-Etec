@@ -45,7 +45,6 @@ function newPassword(){
   });
 }
 /**************CAPTURAR FOTO******************************/
-alert (document.getElementById('cameraApp'));
 document.getElementById('cameraApp').addEventListener('click',cameraApp);
   function cameraApp(){
     navigator.camera.getPicture(onSuccess, onFail, { 
