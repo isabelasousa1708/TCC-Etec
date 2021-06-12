@@ -75,7 +75,7 @@ input:focus {/*foco na hora de preencher o formulario*/
 }
 .buttom-entrar {/*botão*/ 
   position:relative;
-  top: 50px;
+  top: 65px;
   padding: 7px 120px;
   text-align: center;
   text-transform: uppercase;
@@ -91,7 +91,7 @@ input:focus {/*foco na hora de preencher o formulario*/
 }
   /* link "cadastre-se" */
   #register-container{
-    padding-top: 65px;
+    padding-top: 80px;
   }
   #redirecionar-container{
     padding-top: 85px;
