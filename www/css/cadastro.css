@@ -23,7 +23,7 @@ textarea:focus, input:focus{
 a {
    font-size: .8rem;
    position: relative;
-   top:15px;
+   top:10px;
 } 
 a:hover {/*mudança de cor para os os links*/
   color: #08558B;
