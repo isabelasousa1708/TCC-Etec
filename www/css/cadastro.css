@@ -22,6 +22,8 @@ textarea:focus, input:focus{
 } 
 a {
    font-size: .8rem;
+   position: relative;
+   top:15px;
 } 
 a:hover {/*mudança de cor para os os links*/
   color: #08558B;
@@ -50,7 +52,7 @@ label {
   font-weight: bold;
   font-size: .8rem;
   position: relative;
-  top: 15px;
+  top: 25px;
 }
 input {/*barinha de campo de formulario*/
   border-bottom: 2px solid #323232;
@@ -58,7 +60,7 @@ input {/*barinha de campo de formulario*/
   font-size: 1rem;
   margin-bottom: 20px;
   position: relative;
-  top:15px;
+  top:25px;
 }
 input:focus {/*foco na hora de preencher o formulario*/
   border-bottom: 2px solid rgba(97, 200, 231, 0.87);
