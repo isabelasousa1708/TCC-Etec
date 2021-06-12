@@ -64,7 +64,7 @@ input {/*barinha de campo de formulario*/
 }
 #tip{
   position: relative;
-  top: 25px;
+  top: 35px;
 }
 input:focus {/*foco na hora de preencher o formulario*/
   border-bottom: 2px solid rgba(97, 200, 231, 0.87);
