@@ -44,6 +44,15 @@ function newPassword(){
     window.alert("E-mail incorreto ou não cadastrado!");
   });
 }
+/*************MOSTRAR SENHA***************************** */
+function showPassword(){
+  var senha=document.getElementById("password");
+  if(senha.type=="password"){
+      senha.type="text";
+  }else{
+      senha.type="password";
+  }
+}
 /**************CAPTURAR FOTO******************************/
 document.getElementById('cameraApp').addEventListener('click',cameraApp);
   function cameraApp(){
