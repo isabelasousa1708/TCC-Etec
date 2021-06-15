@@ -31,6 +31,19 @@ function logar(){
       window.alert("Email/senha incorreto ou conta inexistente!");
    });
 }
+/******************SAIR************************************/
+function sair(){
+  let sair = document.getElementById("sair").value;
+  firebase.auth().signOut()
+.then((user) => {
+  // Sign-out successful.
+  window.location.href = "index.html";
+}).catch((error) => {
+  // An error happened.
+  window.alert("An error happened");
+});
+}
+
 /**************REDEFINIÇÃO DE SENHA ***********************/
 function newPassword(){
   var auth = firebase.auth();
