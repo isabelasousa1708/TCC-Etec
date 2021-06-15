@@ -31,19 +31,6 @@ function logar(){
       window.alert("Email/senha incorreto ou conta inexistente!");
    });
 }
-/******************SAIR************************************/
-function sair(){
-  let sair = document.getElementById("sair").value;
-  firebase.auth().signOut()
-.then((user) => {
-  // Sign-out successful.
-  window.location.href = "index.html";
-}).catch((error) => {
-  // An error happened.
-  window.alert("An error happened");
-});
-}
-
 /**************REDEFINIÇÃO DE SENHA ***********************/
 function newPassword(){
   var auth = firebase.auth();
@@ -66,12 +53,12 @@ function showPassword(){
       senha.type="password";
   }
 }
-/**************CAPTURAR FOTO******************************/
+/**************CAPTURAR FOTO*****************************
 document.getElementById('cameraApp').addEventListener('click',cameraApp);
   function cameraApp(){
     navigator.camera.getPicture(onSuccess, onFail, { 
       quality: 100,
-      saveToPhotoAlbum: true /*sava a foto na galaeria*/,
+      saveToPhotoAlbum: true /*sava a foto na galaeria,
       destinationType: Camera.DestinationType.DATA_URL
     });
     function onSuccess(imageData) {
@@ -81,7 +68,7 @@ document.getElementById('cameraApp').addEventListener('click',cameraApp);
     function onFail(message) {
       alert('Failed because: ' + message);
     }
-}
+}*/
 /**************COMPARANDO DUAS FOTOS*********************/
 deepai.setApiKey('6610da15-328f-47ea-833b-00ac80de28a7');
 async function compare() {

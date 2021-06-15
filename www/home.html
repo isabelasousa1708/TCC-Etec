@@ -40,6 +40,8 @@
 
         <!--<button id="compare" onclick="compare()">comparar</button>-->
         <button class="buttom-camera" id="cameraApp"><img src="img/cameraIcon (2).png" ></button>
+        <button class="bnt-confirm"><img src="img/confirmIcon.png" alt=""></button>
+        <button class="bnt-cancel"><img src="img/cancelIcon.png" alt=""></button>
             
         <script type="text/javascript">
             const CLIENT_ID ="0f6ee2b06618621";
@@ -48,35 +50,29 @@
              const doUpload = (url, options) =>{
                  console.dir(options);
                  const promiseCallback = (resolve, reject) =>{
-                        fetch(url, options)
-                        .then(response => response.json())
-                        .then(resolve)
-                        .catch(reject);
-                };
-                return new Promise (promiseCallback);
-            } 
-            
-            const addImage = (url) =>{
-                gallery.innerHTML = `<img src="${url}" width="150" id="image"/>`;
-            }
-
-            const onSuccess = (result) => {
-
+                    fetch(url, options)
+                    .then(response => response.json())
+                    .then(resolve)
+                    .catch(reject);
+                 };
+                 return new Promise (promiseCallback);
+                } 
+             const addImage = (url) =>{
+                 gallery.innerHTML = `<img src="${url}" width="150" />`;
+                }
+             const onSuccess = (result) => {
                  const {data: {link} } = result;
                  console.log('link', link);
                  window.link = link;
                  addImage(link);
-
-            };
-
-            const uploadImage = (e) => {
+                };
+             const uploadImage = (e) => {
                  e.preventDefault();//nao faz submit
                  const file = document.getElementById('file');
                  //pegar o arquivo submetido com data
                  const data = new FormData();//
                  data.append('image', file.files[0]);
-                 
-                 
+
                  //fazer o upload.
                  doUpload('https://api.imgur.com/3/image',{
                     method: 'POST',
@@ -89,7 +85,7 @@
                 .catch(console.error);
              };  
             const form = document.getElementById('upload-form');//pegando o form pelo ID
-                form.addEventListener('submit',uploadImage); //form submitado       
+            form.addEventListener('submit',uploadImage); //form submitado 
         </script>
      </div>
     </body>

@@ -1,24 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
-        <title>Confugurações</title>
-        <script src="js/index.js"></script>
-        <link rel="stylesheet" href="css/config.css">
-    </head>
-    <body>
-            <div id="home-container">
-            <div class="app">
-                <ul class="menuBar">
-                <div class="icon" >
-                    <button type="buttom" id="sair" onclick="sair()">Sair</button>
-                    </div>
-                </ul>
-            </div>
-        </div>
-        <script src="cordova.js"></script>
-
-    </body>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/index.css">
+      <!-- The core Firebase JS SDK is always required and must be listed first -->
+      <script src="cordova.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-app.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-auth.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-analytics.js"></script>
+      <script src="js/index.js"></script>
+      <script src="js/configFirebase.js"></script>
+  </head>
+  <body>
+    <div id="login-container">
+      
+      <h2>Configurações</h2>
+      
+      <div id="register-container">
+        <button class="buttom-entrar" onclick="window.location.href = 'index.html'">sair</button>
+      </div>
+    
+    </div>
+  </body>
 </html>
