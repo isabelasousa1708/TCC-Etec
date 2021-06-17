@@ -7,6 +7,7 @@
         <title>Home</title>
         <script src="https://cdnjs.deepai.org/deepai.min.js"></script>
         <script src="js/index.js"></script>
+        <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
         <link rel="stylesheet" href="css/home.css">
     </head>
     <body>
@@ -39,7 +40,7 @@
         <img style="display:none;width:160px;height:160px;position: relative;top: 50px;right: 70;" id="smallImage" src="" />
 
         <!--<button id="compare" onclick="compare()">comparar</button>-->
-        <button class="buttom-camera" id="cameraApp" onclick="alert('Teste camera!');  capturePhoto();">camera</button>
+        <button class="buttom-camera" id="cameraApp" onclick="camera();">camera</button>
         <button class="bnt-confirm"><img src="img/confirmIcon.png" onclick="window.location.href = 'testecamera.html'"></button>
         <button class="bnt-cancel"><img src="img/cancelIcon.png" alt=""></button>
             

@@ -54,29 +54,30 @@ function showPassword(){
 }
 /**************CAPTURAR FOTO*****************************/
 var pictureSource;   // picture source
-var destinationType; // sets the format of returned value
+    var destinationType; // sets the format of returned value
+    
+    document.addEventListener("deviceready",onDeviceReady,false);
+    function onDeviceReady() {
+        pictureSource=navigator.camera.PictureSourceType;
+        destinationType=navigator.camera.DestinationType;
+        document.getElementById('cameraApp');
+    }
+    function onPhotoDataSuccess(imageData) {
 
-document.addEventListener("deviceready",onDeviceReady,false);
-function onDeviceReady() {
-    pictureSource=navigator.camera.PictureSourceType;
-    destinationType=navigator.camera.DestinationType;
-}
-function onPhotoDataSuccess(imageData) {
+      var smallImage = document.getElementById('smallImage');
+      smallImage.style.display = 'block';
+      smallImage.src = "data:image/jpeg;base64," + imageData;
+    }
 
-  var smallImage = document.getElementById('smallImage');
-  smallImage.style.display = 'block';
-  smallImage.src = "data:image/jpeg;base64," + imageData;
-}
+    function camera() {
+      // Take picture using device camera and retrieve image as base64-encoded string
+      navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 50,
+        destinationType: destinationType.DATA_URL });
+    }
 
-function capturePhoto() {
-  // Take picture using device camera and retrieve image as base64-encoded string
-  navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 50,
-    destinationType: destinationType.DATA_URL });
-}
-
-function onFail(message) {
-  alert('Failed because: ' + message);
-}
+    function onFail(message) {
+      alert('Failed because: ' + message);
+    }
 /**************COMPARANDO DUAS FOTOS*********************/
 deepai.setApiKey('6610da15-328f-47ea-833b-00ac80de28a7');
 async function compare() {

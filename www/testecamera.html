@@ -51,7 +51,7 @@
       smallImage.src = "data:image/jpeg;base64," + imageData;
     }
 
-    function capturePhoto() {
+    function camera() {
       // Take picture using device camera and retrieve image as base64-encoded string
       navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 50,
         destinationType: destinationType.DATA_URL });
@@ -64,7 +64,7 @@
     </script>
   </head>
   <body>
-    <button onclick="capturePhoto();">camera</button> <br>
+    <button onclick="camera();">camera</button> <br>
     <img style="display:none;width:160px;height:160px;position: relative;top: 50px;right: 70;" id="smallImage" src="" />
   </body>
 </html>
