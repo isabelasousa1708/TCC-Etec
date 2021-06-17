@@ -37,7 +37,6 @@ li a {
     text-decoration: none;
 }
 /*botao upload*/
-
 #img-avatar{
     width: 180px;
     padding-top: 40px;
@@ -47,7 +46,7 @@ li a {
     position: relative;
     right: 85px;
     overflow: hidden;
-    display: inline-block;
+    display: inline-block;   
 }  
 #img-logo-home{
     width: 60px;
@@ -127,4 +126,12 @@ li a {
     position: relative;
     top: 50px;
     right: 70;
+}
+.btn-voltar {
+    position: relative;
+    top: 50px;
+    right: 70px;
+    overflow: hidden;
+    display: inline-block;
+    background: #ffffff;
 }

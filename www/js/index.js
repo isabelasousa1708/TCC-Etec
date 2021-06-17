@@ -52,22 +52,22 @@ function showPassword(){
       senha.type="password";
   }
 }
-/**************CAPTURAR FOTO*****************************
-document.getElementById('cameraApp').addEventListener('click',cameraApp);
-  function cameraApp(){
-    navigator.camera.getPicture(onSuccess, onFail, { 
-      quality: 100,
-      saveToPhotoAlbum: true /*sava a foto na galaeria,
-      destinationType: Camera.DestinationType.DATA_URL
-    });
-    function onSuccess(imageData) {
-      var image = document.getElementById('myImage');
-       image.src = "data:image/jpeg;base64," + imageData;
-    };
-    function onFail(message) {
-      alert('Failed because: ' + message);
-    }
-}*/
+/**************CAPTURAR FOTO*****************************/
+function camera(){
+  navigator.camera.getPicture(onSuccess, onFail, { quality: 50,
+    destinationType: Camera.DestinationType.DATA_URL
+  });
+
+  function onSuccess(imageData) {
+    var image = document.getElementById('myImage');
+    image.src = "data:image/jpeg;base64," + imageData;
+  }
+
+  function onFail(message) {
+    alert('Failed because: ' + message);
+  }
+}
+
 /**************COMPARANDO DUAS FOTOS*********************/
 deepai.setApiKey('6610da15-328f-47ea-833b-00ac80de28a7');
 async function compare() {
