@@ -22,13 +22,12 @@ function logar(){
 
   firebase.auth().signInWithEmailAndPassword(email, password)
       .then((user) => {
-      window.alert("conta logada com sucesso!");
       window.location.href = "home.html";
   })
       .catch((error) => {
       var errorCode = error.code;
       var errorMessage = error.message;
-      window.alert("Email/senha incorreto ou conta inexistente!");
+      window.alert("E-mail/senha incorreto ou conta inexistente!");
    });
 }
 /**************REDEFINIÇÃO DE SENHA ***********************/
