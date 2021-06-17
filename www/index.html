@@ -38,9 +38,9 @@
         </div>
         <img style="display:none;width:160px;height:160px;position: relative;top: 50px;right: 70;" id="smallImage" src="" />
 
-        <!--<button id="compare" onclick="compare()">comparar</button> <button class="buttom-camera" id="cameraApp" onclick="capturePhoto();"><img src="img/cameraIcon (2).png"></button>-->
+        <!--<button id="compare" onclick="compare()">comparar</button>-->
         <button class="buttom-camera" id="cameraApp" onclick="capturePhoto();">camera</button>
-        <button class="bnt-confirm"><img src="img/confirmIcon.png" onclick="window.location.href = 'comemoracao.html'"></button>
+        <button class="bnt-confirm"><img src="img/confirmIcon.png" onclick="window.location.href = 'testecamera.html'"></button>
         <button class="bnt-cancel"><img src="img/cancelIcon.png" alt=""></button>
             
         <script type="text/javascript">
@@ -87,31 +87,7 @@
             const form = document.getElementById('upload-form');//pegando o form pelo ID
             form.addEventListener('submit',uploadImage); //form submitado 
             /////////////////////////
-            var pictureSource;   // picture source
-            var destinationType; // sets the format of returned value
-            
-            document.addEventListener("deviceready",onDeviceReady,false);
-            function onDeviceReady() {
-                pictureSource=navigator.camera.PictureSourceType;
-                destinationType=navigator.camera.DestinationType;
-            }
-            function onPhotoDataSuccess(imageData) {
-
-            var smallImage = document.getElementById('smallImage');
-            smallImage.style.display = 'block';
-            smallImage.src = "data:image/jpeg;base64," + imageData;
-            }
-
-            function capturePhoto() {
-            // Take picture using device camera and retrieve image as base64-encoded string
-            navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 50,
-                destinationType: destinationType.DATA_URL });
-            }
-
-            function onFail(message) {
-            alert('Failed because: ' + message);
-            }
-                </script>
+       </script>
      </div>
     </body>
 </html>
