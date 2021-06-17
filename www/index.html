@@ -1,85 +1,91 @@
-<!--<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Comemoração</title>
-    <script src="js/index.js"></script>
-    <link rel="stylesheet" href="css/home.css">
-</head>
-<body>
-    senha: <input type="password" id="password">
-    <input type="image" <img src="https://img.icons8.com/ios/50/000000/visible--v2.png" onclick="showPassword();">
-
-    <button onclick="camera()">camera</button>
-    
-    <script>
-        function showPassword(){
-            var senha=document.getElementById("password");
-            if(senha.type=="password"){
-                senha.type="text";
-            
-            }else{
-                senha.type="password";
-            }
-        }
-    </script>
-    <img src="img/avatar.gif" width="150" alt="">
-</body>
-</html>-->
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>Capture Photo</title>
-    <link rel="stylesheet" href="css/home.css">
-    <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
-    <script type="text/javascript" charset="utf-8">
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Home</title>
+        <script src="https://cdnjs.deepai.org/deepai.min.js"></script>
+        <script src="js/index.js"></script>
+        <link rel="stylesheet" href="css/home.css">
+    </head>
+    <body>
+      <div id="home-container">
+        <ul class="menuBar">
+          <div class="icon" >
+          <li class="menuIcon"><a href=""><img src="img/menuIcon.png"/></a></li> 
+          <li class="homeIcon"><a href=""><img src="img/logo-home.jpg" id="img-logo-home"/></a></li>
+          <li class="configIcon"><a href="config.html"><img src="img/configIcon.png"/></a></li>
+          </div>
+      </ul>
+       
+      <img id="img-avatar" src="img/avatar.jpeg" alt="">
 
-    var pictureSource;   // picture source
-    var destinationType; // sets the format of returned value
+        <form id="upload-form" action="" method="POST" enctype="multipart/form-data">
+                <label class="btn-upload">
+                    <input type="file" id="file" name="file" name="submit">
+                    <button class="btn"><img src="img/galleryIcon.png" ></button>
+                </label>
 
-    
-    document.addEventListener("deviceready",onDeviceReady,false);
-    function onDeviceReady() {
-        pictureSource=navigator.camera.PictureSourceType;
-        destinationType=navigator.camera.DestinationType;
-    }
+                <label class="bnt-action">
+                    <input type="submit" id="action" >
+                    <button class="btn-action"><img src="img/actionIcon.png"></button>
+                </label>
+        </form>
 
-    // Called when a photo is successfully retrieved
-    //
-    function onPhotoDataSuccess(imageData) {
+        <div id="gallery">
+          <!---->
+        </div>
 
-      var smallImage = document.getElementById('smallImage');
-      smallImage.style.display = 'block';
-      smallImage.src = "data:image/jpeg;base64," + imageData;
-    }
+        <!--<button id="compare" onclick="compare()">comparar</button>-->
+        <button class="buttom-camera" id="cameraApp" onclick="capturePhoto();"><img src="img/cameraIcon (2).png" >button>
+        <button class="bnt-confirm"><img src="img/confirmIcon.png" onclick="window.location.href = 'comemoracao.html'"></button>
+        <button class="bnt-cancel"><img src="img/cancelIcon.png" alt=""></button>
+            
+        <script type="text/javascript">
+            const CLIENT_ID ="0f6ee2b06618621";
+            const gallery = document.getElementById('gallery');
 
-    // Called when a photo is successfully retrieved
-    //
-    function onPhotoURISuccess(imageURI) {
-     
-      var largeImage = document.getElementById('largeImage');
-      largeImage.style.display = 'block';
-      largeImage.src = imageURI;
-    }
+             const doUpload = (url, options) =>{
+                 console.dir(options);
+                 const promiseCallback = (resolve, reject) =>{
+                    fetch(url, options)
+                    .then(response => response.json())
+                    .then(resolve)
+                    .catch(reject);
+                 };
+                 return new Promise (promiseCallback);
+                } 
+             const addImage = (url) =>{
+                 gallery.innerHTML = `<img src="${url}" width="150" />`;
+                }
+             const onSuccess = (result) => {
+                 const {data: {link} } = result;
+                 console.log('link', link);
+                 window.link = link;
+                 addImage(link);
+                };
+             const uploadImage = (e) => {
+                 e.preventDefault();//nao faz submit
+                 const file = document.getElementById('file');
+                 //pegar o arquivo submetido com data
+                 const data = new FormData();//
+                 data.append('image', file.files[0]);
 
-    // A button will call this function
-    //
-    function capturePhoto() {
-      // Take picture using device camera and retrieve image as base64-encoded string
-      navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 50,
-        destinationType: destinationType.DATA_URL });
-    }
-
-    function onFail(message) {
-      alert('Failed because: ' + message);
-    }
-
-    </script>
-  </head>
-  <body>
-    <button onclick="capturePhoto();"><img src="img/cameraIcon (2).png" ></button> <br>
-    <img style="display:none;width:160px;height:160px;position: relative;top: 50px;right: 70;" id="smallImage" src="" />
-  </body>
+                 //fazer o upload.
+                 doUpload('https://api.imgur.com/3/image',{
+                    method: 'POST',
+                    body: data,
+                    headers: {
+                        'Authorization':`Client-ID ${CLIENT_ID}`,
+                    }
+                })
+                .then(onSuccess)
+                .catch(console.error);
+             };  
+            const form = document.getElementById('upload-form');//pegando o form pelo ID
+            form.addEventListener('submit',uploadImage); //form submitado 
+        </script>
+     </div>
+    </body>
 </html>
