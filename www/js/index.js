@@ -53,8 +53,8 @@ function showPassword(){
   }
 }
 /**************CAPTURAR FOTO*****************************/
-var pictureSource;   // picture source
-    var destinationType; // sets the format of returned value
+  var pictureSource;   // picture source
+  var destinationType; // sets the format of returned value
     
     document.addEventListener("deviceready",onDeviceReady,false);
     function onDeviceReady() {
@@ -68,13 +68,11 @@ var pictureSource;   // picture source
       smallImage.style.display = 'block';
       smallImage.src = "data:image/jpeg;base64," + imageData;
     }
-
     function camera() {
       // Take picture using device camera and retrieve image as base64-encoded string
       navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 50,
         destinationType: destinationType.DATA_URL });
     }
-
     function onFail(message) {
       alert('Failed because: ' + message);
     }
