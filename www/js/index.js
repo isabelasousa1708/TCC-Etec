@@ -55,7 +55,7 @@ function showPassword(){
 /**************CAPTURAR FOTO*****************************/
   var pictureSource;   // picture source
   var destinationType; // sets the format of returned value
-    
+  
     document.addEventListener("deviceready",onDeviceReady,false);
     function onDeviceReady() {
         pictureSource=navigator.camera.PictureSourceType;
@@ -63,7 +63,6 @@ function showPassword(){
         document.getElementById('cameraApp');
     }
     function onPhotoDataSuccess(imageData) {
-
       var smallImage = document.getElementById('smallImage');
       smallImage.style.display = 'block';
       smallImage.src = "data:image/jpeg;base64," + imageData;
